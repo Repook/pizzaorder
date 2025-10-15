@@ -2,11 +2,10 @@ package com.cooper.pizza;
 
 public class Pizza {
 
-    private float price;
+    private static final float PRICE = 8.5F;
     private String name;
 
     public Pizza(String name){
-        this.price = 8.50f;
         this.name = name;
     }
 
@@ -15,11 +14,7 @@ public class Pizza {
     }
 
     public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
+        return PRICE;
     }
 
 }

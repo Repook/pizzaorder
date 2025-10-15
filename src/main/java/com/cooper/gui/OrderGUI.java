@@ -8,26 +8,32 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 public class OrderGUI extends GUI implements ActionListener{
-
-    //private ImageIcon backgroundIcon = new ImageIcon(getClass().getClassLoader().getResource("assets/images/checkout.jpg"));
 
     private JButton button;
 
     private JPanel panel;
 
+    private JPanel deliveryPanel;
+
+    private JCheckBox deliveryCheckBox;
+
+    public boolean isForDelivery;
+
+
     //constructor
     public OrderGUI(String title,int windowSizeX, int windowSizeY){
         super(title, windowSizeX, windowSizeY);
-
-        //BasicBackgroundPanel background = new BasicBackgroundPanel(backgroundIcon.getImage());
 
         // new order button
         button = new JButton("New Order");
         button.setPreferredSize(new Dimension(100,100));
         button.addActionListener(this);
+
+
 
         //panel logic
         panel = new JPanel();
@@ -36,18 +42,27 @@ public class OrderGUI extends GUI implements ActionListener{
         panel.add(this.pizzaLabel);
         panel.add(button);
 
-        
+        //Delivery Pnael logic
+        deliveryPanel = new JPanel();
+        deliveryPanel.setLayout(new FlowLayout());
+
+
         add(panel,BorderLayout.CENTER);
-        //add(background);
+        add(deliveryPanel,BorderLayout.SOUTH);
         
         //keep at end
         setVisible(true);
     }
 
+
+    //called when button's are pressed
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainMenuGUI menuOrderGui = new MainMenuGUI("Pick Your Pizza's!!!!", 700, 800);
-        //dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            //make the Main Order Window, with the grid of pizzas
+            MainMenuGUI menuOrderGui = new MainMenuGUI("Pick Your Pizza's!!!!", 700, 650);
+        
+
+
     }
 
 

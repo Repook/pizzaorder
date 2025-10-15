@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.LayoutManager;
+import java.awt.Window;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -17,9 +18,7 @@ public class GUI extends JFrame{
     public JLabel pizzaLabel;
     
         public GUI(String title,int windowSizeX, int windowSizeY){
-
-        //close the operation when close window
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        closeIfOneWindow();
 
         setTitle(title);
         setSize(windowSizeX,windowSizeY);
@@ -45,6 +44,7 @@ public class GUI extends JFrame{
         setVisible(true);
     }
 
+    //makes a default button
     public JButton createButton(JButton button, JFrame frame, String text){
         button.setText(text);
         button.addActionListener((ActionListener) frame);
@@ -53,8 +53,16 @@ public class GUI extends JFrame{
         return button;
     }
 
+    //makes a grid layout panel
     public JPanel createGridLayoutPanel(JPanel panel, LayoutManager layoutManager){
         layoutManager = new GridLayout();
         return panel;
+    }
+
+    //checks if there is one window, if there is allow the program to close if the window is closed
+    public void closeIfOneWindow(){
+        if (Window.getWindows().length == 1) {
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
     }
 }
